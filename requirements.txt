@@ -1,2 +1,4 @@
 htmllaundry
 requests
+textblob
+pattern
