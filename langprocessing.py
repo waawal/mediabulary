@@ -1,25 +1,25 @@
 # -*- coding: utf-8 -*-
 from collections import Counter
-#from pattern.de import parse, split
+from pattern.de import parse
 from textblob import TextBlob
 from stopwords import STOPWORDS
 
-# def parse_text(text):
-#     """ takes german text, 1 or more sentences and applies part of speech information
-#     """
-#     # STTS works better than standard tagset. The target words are NN and NE
-#     return parse(text, tagset="STTS")
-# 
-# def noun_list(sentence):
-#     """sentence format: 
-#        [[u'Die', u'ARTDEF', u'O', u'O'], item2as_list, ...]
-#     """
-#     nouns = []
-#     for i in sentence:
-#         the_word = i[0]
-#         if i[1] in ['NN', 'NE'] and the_word[0].isupper():
-#             nouns.append(the_word)
-#     return nouns
+def parse_text(text):
+    """ takes german text, 1 or more sentences and applies part of speech information
+    """
+    # STTS works better than standard tagset. The target words are NN and NE
+    return parse(text, tagset="STTS")
+
+def noun_list(sentence):
+    """sentence format: 
+       [[u'Die', u'ARTDEF', u'O', u'O'], item2as_list, ...]
+    """
+    nouns = []
+    for i in sentence:
+        the_word = i[0]
+        if i[1] in ['NN', 'NE'] and the_word[0].isupper():
+            nouns.append(the_word)
+    return nouns
 
 def tokenize(data):
     content = TextBlob(data)
@@ -29,7 +29,8 @@ def remove_stopwords(doc):
     words = doc.split()
     processed_words = [word for word in words if not word.lower() in STOPWORDS or
     len(word) > 4]
-    return ' '.join(processed_words)
+    nouns = parse_text(' '.join(processed_words))
+    return ' '.join([word[0] for word in nouns])
 
 def find_most_frequent_words(docs, amount=20):
     counter = Counter()
