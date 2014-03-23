@@ -28,7 +28,7 @@ def tokenize(data):
 def remove_stopwords(doc):
     words = doc.split()
     processed_words = [word for word in words if not word.lower() in STOPWORDS or
-    len(word) < 4]
+    len(word) > 4]
     return ' '.join(processed_words)
 
 def find_most_frequent_words(docs, amount=20):
