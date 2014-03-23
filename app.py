@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import json
 from gevent import monkey
 monkey.patch_all()
 import bottle
@@ -16,6 +17,7 @@ def process_query(q):
 
 @app.get('/flashcards/<query>')
 def index(query):
-    return dict(process_query(query))
+    print json.dumps(process_query(query))
+    return json.dumps(process_query(query))
 
 app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
