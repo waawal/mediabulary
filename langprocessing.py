@@ -2,7 +2,7 @@
 from collections import Counter
 from pattern.de import parse, split
 from textblob import TextBlob
-from .stopwords import STOPWORDS
+from stopwords import STOPWORDS
 
 def parse_text(text):
     """ takes german text, 1 or more sentences and applies part of speech information

@@ -3,8 +3,8 @@ from gevent import monkey
 monkey.patch_all()
 import bottle
 
-import .ipool
-import .langprocessing
+import ipool
+import langprocessing
 
 app = bottle.Bottle()
 
