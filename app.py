@@ -7,7 +7,7 @@ import bottle
 
 import ipool
 import langprocessing
-import dicttoxml
+from dicttoxml import dicttoxml
 
 
 app = bottle.Bottle()
