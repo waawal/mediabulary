@@ -12,7 +12,7 @@ app = bottle.Bottle()
 
 def process_query(q):
     articles = ipool.query(q)
-    return langprocessing.process_documents(articles, 10)
+    return langprocessing.process_documents(articles, 20)
 
 
 @app.get('/flashcards/<query>')
