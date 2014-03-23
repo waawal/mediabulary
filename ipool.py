@@ -15,4 +15,6 @@ def query(q, limit=100, **kwargs):
     if kwargs:
         payload.extend(kwargs)
     docs = requests.get(BASE, params=payload).json()['documents']
-    return [strip_markup(doc['content']) for doc in docs]
+    result = [strip_markup(doc['content']) for doc in docs]
+    print result
+    return result
