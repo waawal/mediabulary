@@ -27,7 +27,7 @@ def tokenize(data):
 
 def remove_stopwords(doc):
     words = doc.split()
-    processed_words = [word for word in words if not word in STOPWORDS]
+    processed_words = [word for word in words if not word.lower() in STOPWORDS]
     return ' '.join(processed_words)
 
 def find_most_frequent_words(docs, amount=20):
@@ -43,7 +43,7 @@ def process_documents(docs, amount=20):
     print 'top 20 words:', top_20
     result = {}
     for word in top_20:
-        result[word] = TextBlob(word).translate(from_lang="De", to="en")
+        result[word[0]] = TextBlob(word[0]).translate(from_lang="De", to="en")
     return result
 
 
