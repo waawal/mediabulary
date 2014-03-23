@@ -1,6 +1,6 @@
 import os
-import gevent
-gevent.monkey.patch_all()
+from gevent import monkey
+monkey.patch_all()
 import bottle
 
 app = bottle.Bottle()
