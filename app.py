@@ -24,7 +24,7 @@ def index(query):
     some_dict = {}
     some_dict['flashcards'] = []
     for key, value in process_query(query).items():
-        some_dict['flashcards'].append({'word': key, 'translation': value})
+        some_dict['flashcards'].append({'word': unicode(key), 'translation': unicode(value)})
 
     return dicttoxml(some_dict)
 
