@@ -27,10 +27,10 @@ def tokenize(data):
 
 def remove_stopwords(doc):
     words = doc.split()
-    processed_words = [word for word in words if not word.lower() in STOPWORDS or
-    len(word) > 4]
-    nouns = parse_text(' '.join(processed_words))
-    return ' '.join([word[0] for word in nouns])
+    processed_words = [word for word in words if not word.lower() in STOPWORDS]
+    #nouns = parse_text(' '.join(processed_words)) 
+    #return ' '.join([word[0] for word in nouns])
+    return ' '.join(processed_words)
 
 def find_most_frequent_words(docs, amount=20):
     counter = Counter()
@@ -40,12 +40,13 @@ def find_most_frequent_words(docs, amount=20):
         counter.update(wordlist)
     return counter.most_common(amount)
 
-def process_documents(docs, amount=20):
-    top_20 = find_most_frequent_words(docs, amount)
-    print 'top 20 words:', top_20
+def process_documents(docs, amount=50):
+    top_50 = find_most_frequent_words(docs, amount)
+    print 'top 50 words:', top_50
     result = {}
-    for word in top_20:
-        result[word[0]] = unicode(TextBlob(word[0]).translate(from_lang="De", to="en"))
+    for word in top_50:
+        if len(result[word[0]]) > 4:
+            result[word[0]] = unicode(TextBlob(word[0]).translate(from_lang="De", to="en"))
     return result
 
 
