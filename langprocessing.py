@@ -40,6 +40,7 @@ def find_most_frequent_words(docs, amount=20):
 
 def process_documents(docs, amount=20):
     top_20 = find_most_frequent_words(docs, amount)
+    print 'top 20 words:', top_20
     result = {}
     for word in top_20:
         result[word] = TextBlob(word).translate(from_lang="De", to="en")
