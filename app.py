@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 from gevent import monkey
 monkey.patch_all()
