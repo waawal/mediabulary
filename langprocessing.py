@@ -45,7 +45,7 @@ def process_documents(docs, amount=50):
     print 'top 50 words:', top_50
     result = {}
     for word in top_50:
-        if len(word[0]) > 4:
+        if len(word[0]) > 4 and not unicode(parse_text(word)).endswith('/NE/O/O'):
             result[word[0]] = unicode(TextBlob(word[0]).translate(from_lang="De", to="en"))
     if len(result) > 20:
         result = result[:20]
