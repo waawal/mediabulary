@@ -32,7 +32,7 @@ def remove_stopwords(doc):
     #return ' '.join([word[0] for word in nouns])
     return ' '.join(processed_words)
 
-def find_most_frequent_words(docs, amount=20):
+def find_most_frequent_words(docs, amount=50):
     counter = Counter()
     for doc in docs:
         doc = remove_stopwords(doc)
