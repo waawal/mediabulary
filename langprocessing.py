@@ -43,7 +43,7 @@ def process_documents(docs, amount=20):
     print 'top 20 words:', top_20
     result = {}
     for word in top_20:
-        result[word[0]] = TextBlob(word[0]).translate(from_lang="De", to="en")
+        result[word[0]] = unicode(TextBlob(word[0]).translate(from_lang="De", to="en"))
     return result
 
 
