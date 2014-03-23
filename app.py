@@ -12,10 +12,6 @@ import dicttoxml
 
 app = bottle.Bottle()
 
-def create_xml(deck)
-    root = etree.Element("root")
-    root.append(etree.Element("vocabulary"))
-
 
 def process_query(q):
     articles = ipool.query(q)
